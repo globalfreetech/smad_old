@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img slot = "start" src="assets/images/CashMash-AppLogo.png" class="logo">
+    <ion-title>My Ads</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color = "secondary">
+    <ion-card-header text-center>
+      <ion-card-title>{{ this.clickbalance }}</ion-card-title>
+      <ion-card-subtitle>Clicks Balance</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <div text-center *ngIf="this.success !== 1"><ion-label>No Ads</ion-label></div>
+  
+
+  <ion-list *ngIf="this.success === 1">
+    <ion-item *ngFor="let item of items" class="ion-no-padding">
+      <ion-label class="ion-text-wrap">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2 *ngIf="item.active == '2'">New Design Request</h2>
+              <p class="item">Active: {{item.active}}</p>
+              <p class="item">Booking Id: {{item.bookingId}}</p>
+              <p class="item">Ads Id: {{item.adsId}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand = "block" (click)= "presentConfirm2(item.bookingId)">
+                {{item.cmPointsPlus}} Seconds
+              </ion-button>
+            </ion-col>
+            <ion-col col-6>
+              <ion-button expand = "block" *ngIf="item.active == '1'" (click)= "presentConfirm(1, item.adsId)">
+                Pause Ad
+              </ion-button>
+              <ion-button expand = "block" *ngIf="item.active == '3'" (click)= "presentConfirm(2, item.adsId)">
+                Resume Ad
+              </ion-button>
+              <ion-button expand = "block" *ngIf="item.active == '2' && item.stageId == '3'" (click)="approve(5, item)">
+                Approve
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="(item.active == '1' || item.active == '3') && (item.new_adsId == '0')">
+            <ion-col>
+              <ion-button expand = "block" (click)= "presentConfirm1(item.adsId, item.premiumImage, item.bookingId)">
+                Design Change
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand = "block" *ngIf="(item.active == '1' || item.active == '3')" (click)= "presentConfirm(3, item.adsId)">
+                Update Location
+              </ion-button>
+              <ion-button expand = "block" *ngIf="item.active == '2' && item.stageId == '3'" (click)="approve(4, item)">
+                Request Changes
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="item.active == 3">
+            <ion-col>
+              <ion-button expand = "block" color = "danger">PAUSED</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
+      <ion-thumbnail slot = "end">
+        <img src="{{item.adsImage}}" *ngIf="item.adsImage !== 'noimage'" (click)="fullimage(item.adsImage)">
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+
+
+  <!-- <div *ngIf="this.success === 1">
+  <ion-item *ngFor="let item of items">
+          <h2 *ngIf="item.active == '2'">
+            New Design Request
+          </h2 >
+          <ion-thumbnail slot="end" *ngIf="item.adsImage !== 'noimage'">
+            <img src="{{item.adsImage}}" (click)="fullimage(item.adsImage)">
+          </ion-thumbnail>
+          <h2 class="item">{{item.active}}...</h2>
+          <h2 class="item">{{item.bookingId}}...</h2>
+          <h3 class="item">{{item.adsId}}</h3>
+          <ion-button (click)= "presentConfirm2(item.bookingId)">
+            {{item.cmPointsPlus}} Seconds
+          </ion-button>
+          <ion-button *ngIf="item.active == '1'" (click)= "presentConfirm(1, item.adsId)">
+            Pause Ad
+          </ion-button>
+          <ion-button *ngIf="item.active == '3'" (click)= "presentConfirm(2, item.adsId)">
+            Resume Ad
+          </ion-button>
+          <ion-button *ngIf="(item.active == '1' || item.active == '3') && (item.new_adsId == '0')" (click)= "presentConfirm1(item.adsId, item.premiumImage, item.bookingId)">
+            Design Change
+          </ion-button>
+          <ion-button *ngIf="(item.active == '1' || item.active == '3')" (click)= "presentConfirm(3, item.adsId)">
+            Update Location
+          </ion-button>
+          <div *ngIf="item.active == 3" class="pause">
+            PAUSED
+          </div>
+          <ion-button *ngIf="item.active == '2' && item.stageId == '3'" (click)="approve(5, item)">
+            Approve
+          </ion-button>
+          <ion-button *ngIf="item.active == '2' && item.stageId == '3'" (click)="approve(4, item)">
+            Request Changes
+          </ion-button>
+  </ion-item>
+  </div> -->
+</ion-content>
+<ion-footer>
+  <ion-button expand = "block" (click)="openWithCordovaBrowser()">
+    Book a New Advertisement
+  </ion-button>
+</ion-footer>

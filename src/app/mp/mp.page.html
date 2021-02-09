@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="backpress()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img slot = "start" src="assets/images/CashMash-AppLogo.png" class="logo">
+    <ion-title><img src="assets/images/CashMash-TextIcon.png"></ion-title>
+    <ion-badge color = "secondary" slot = "end" *ngIf="this.addetails.points > '0'" (click)= "initTimer()">{{timer.displayTime}}</ion-badge>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="this.addetails.videoFile != 'noimage'">
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-content>
+            <iframe [src]="this.videoFileSafe"></iframe>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-content>
+            <img src="{{this.addetails.adsImage}}" (click)="fullimage(this.addetails.adsImage)">
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="this.addetails.detail_sts != '0' && addetails.lat > '0' && addetails.lang > '0'">
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-content>
+            <iframe [src]="this.mapurlSafe" allowfullscreen></iframe>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="this.addetails.website != 'noimage'">
+      <ion-col>
+        <ion-button expand = "block" color="secondary" (click)="openWithCordovaBrowser()">Visit Website</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center *ngIf="this.addetails.views != '0'">
+        <ion-icon name = "eye" size = "large"></ion-icon>
+        <ion-badge color = "secondary">{{this.addetails.view_count}}</ion-badge>
+      </ion-col>
+      <ion-col text-center *ngIf="this.addetails.advMobile != '0'">
+        <ion-icon name = "call" (click)= "call()" size = "large"></ion-icon>
+      </ion-col>
+      <ion-col *ngIf="this.addetails.enquiry != '0'" text-center>
+        <ion-icon name = "mail" (click)="navigatetoenqpage()" size = "large"></ion-icon>
+      </ion-col>
+      <ion-col  *ngIf="this.addetails.fav_sts == '0'" text-center>
+        <ion-icon name = "heart" (click)="favchange(1)" size = "large"></ion-icon>
+      </ion-col>
+      <ion-col *ngIf="this.addetails.fav_sts > '0'" text-center>
+        <ion-icon name = "heart" (click)="favchange(0)" style = "color: green;" size = "large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

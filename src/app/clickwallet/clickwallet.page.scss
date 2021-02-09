@@ -1,0 +1,41 @@
+.clkrecd{
+    color: var(--ion-color-secondary); 
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%, 30%);    
+}
+.clksent{
+    color: red;
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+}
+
+ion-avatar {
+    position: relative;
+    margin-left: 5%;
+}
+
+ion-segment {
+    position: sticky;
+    top: 0;
+}
+
+ion-list ion-item {
+    overflow: inherit;
+}
+
+ion-grid, ion-row, ion-col {
+    padding:0;
+}
+
+ion-card ion-card-header, ion-card-subtitle {
+    padding: 5%;
+} 
+
+.logo{
+    height: 10%;
+    width: 10%;
+    }

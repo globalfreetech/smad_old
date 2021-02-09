@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "352472168204",
+    "firebase_url": "https://smadmag-7af64.firebaseio.com",
+    "project_id": "smadmag-7af64",
+    "storage_bucket": "smadmag-7af64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352472168204:android:e9ff1d312d73a27786bb29",
+        "android_client_info": {
+          "package_name": "io.smadmag.skillbiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352472168204-he7kmr8qcn83nsvjjcfhhgp9ja07o07b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.smadmag.skillbiz",
+            "certificate_hash": "612cf74c9294d44b9319affffa11818557d286f3"
+          }
+        },
+        {
+          "client_id": "352472168204-40g5mrevafhnedo5rm30r9nfq8a2292q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9XZ3T-dOQv6HPpElbNouZdmaBckCF1kU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352472168204-40g5mrevafhnedo5rm30r9nfq8a2292q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "352472168204-na0gii4ummkvqf83iqfq7ro7i6u16unh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.smadmag.skillbiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,26 +1,67 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content *ngIf="showMenu">
         <ion-list id="inbox-list">
           <ion-list-header>Inbox</ion-list-header>
           <ion-note>hi@ionicframework.com</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item  [routerLink]="'favouriteads'">
+              <ion-icon slot="start" [name]="'heart'" style = "color: green;" size = "large"></ion-icon>
+              <ion-label>
+                Favourite Ads
+              </ion-label>
+            </ion-item>
+            <ion-item  [routerLink]="'myads'">
+              <ion-icon slot="start" [name]="'heart'" style = "color: green;" size = "large"></ion-icon>
+              <ion-label>
+                My Ads
+              </ion-label>
+            </ion-item>
+            <ion-item  [routerLink]="'clickwallet'">
+              <ion-icon slot="start" [name]="'heart'" style = "color: green;" size = "large"></ion-icon>
+              <ion-label>
+                Click Wallet
+              </ion-label>
+            </ion-item>
+            <ion-item [routerLink]="'cmtransactions'">
+              <ion-icon slot="start" [name]="'heart'" style = "color: green;" size = "large"></ion-icon>
+              <ion-label>
+                SMAD Cash Wallet
+              </ion-label>
+            </ion-item>
+            <ion-item  [routerLink]="'notifications'">
+              <ion-icon slot="start" [name]="'share'"></ion-icon>
+              <ion-label>
+                Notifications
+              </ion-label>
+            </ion-item>
+            <ion-item  [routerLink]="'socialshare'">
+              <ion-icon slot="start" [name]="'share'"></ion-icon>
+              <ion-label>
+                Refer & Earn
+              </ion-label>
+            </ion-item>
+            <ion-item  (click)="navigatetoenqpage()">
+              <ion-icon slot="start" [name]="'heart'" style = "color: green;" size = "large"></ion-icon>
+              <ion-label>
+                Contact Us
+              </ion-label>
+            </ion-item>
+            <ion-item  [routerLink]="'guidemenu'">
+              <!-- <ion-icon slot="start" [name]="'share'"></ion-icon> -->
+              <div item-left class="aboutuslogo">
+                <img src="assets/images/CashMash-AppLogo.png">
+              </div>
+              <ion-label>
+                SMAD Mag Help
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="logout()" routerDirection="root" lines="none" detail="false">
+              <ion-label>Logout</ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item *ngFor="let label of labels" lines="none">
-            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>

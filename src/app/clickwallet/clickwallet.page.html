@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img slot = "start" src="assets/images/CashMash-AppLogo.png" class="logo">
+    <ion-title>Click Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-6>
+        <ion-card color = "secondary">
+          <ion-card-header text-center>
+            <ion-card-title>{{this.clickbalance}}</ion-card-title>
+            <ion-card-subtitle>Clicks Balance</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card color = "secondary">
+          <ion-card-header text-center>
+            <ion-card-title>{{this.clickrecharge}}</ion-card-title>
+            <ion-card-subtitle>Total Recharge</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col col-6>
+          <ion-card color = "secondary">
+            <ion-card-header text-center>
+              <ion-card-title>{{this.clickdesigns}}</ion-card-title>
+              <ion-card-subtitle>Clicks spent on Ad Designing</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card color = "secondary">
+            <ion-card-header text-center>
+              <ion-card-title>{{this.clickviews}}</ion-card-title>
+              <ion-card-subtitle>Clicks spent on Ad Views</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+
+  <ion-segment [(ngModel)]="notitype">
+    <ion-segment-button value="0" (click)="filterItems('0')">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="1" (click)="filterItems('1')">
+      <ion-label>Received</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2" (click)="filterItems('2')">
+      <ion-label>Paid</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let item of filtereditems" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img src="assets/images/CashMash-PointsIcon.png">
+        <h5 *ngIf="item.clicks[0] != '-'" class="clkrecd">+{{item.clicks}}</h5>
+        <h5 *ngIf="item.clicks[0] == '-'" class="clksent">{{item.clicks}}</h5>
+      </ion-avatar>
+      <ion-label class="ion-text-wrap">
+        <h2>{{item.description}}</h2>
+        <p>{{item.transactionDate}}</p>
+        <!-- <p>{{item.transactionId}},
+          {{item.transactionDate}},
+          {{item.clicks}},
+          {{item.description}},
+          {{item.receiptId}},
+          {{item.type}},</p> -->
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

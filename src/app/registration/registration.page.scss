@@ -1,0 +1,75 @@
+ion-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+    --background: url('https://clicker.smadmag.com/_lib/file/img/SMAD Mag App RegImage.jpeg');
+    height: 100vh;
+    width: 100%;
+}
+
+.totalbox {
+    width: 40%;
+    height: auto;
+    margin: auto;
+    padding: 10px 30px;
+    background: #fff;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+}
+
+.boxcheckbox {
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 20px;
+}
+
+.loginbtn {
+    background: rgb(250, 113, 136);
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 50px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+}
+.loginbtn:hover,
+.loginbtn:focus {
+    background: rgb(230, 106, 127);
+}
+
+.boxcheckbox label {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+    .totalbox {
+        width: 90%;
+    }
+}

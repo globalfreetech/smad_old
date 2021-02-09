@@ -1,0 +1,28 @@
+.logo{
+    height: 10%;
+    width: 10%;
+    }
+
+ion-grid, ion-row, ion-col {
+    padding: 0;
+    margin: 0;
+}
+
+ion-card {
+    padding: 0;
+    margin-left: 2%;
+    margin-right: 2%
+}
+
+ion-card-content {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+ion-badge {
+    position: absolute;
+    border-radius: 50%;
+    top: 0%;
+    right: 0%;
+  }

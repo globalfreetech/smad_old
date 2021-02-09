@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img slot = "start" src="assets/images/CashMash-AppLogo.png" class="logo">
+    <ion-title>Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+        <ion-card color = "secondary">
+          <ion-card-header text-center>
+            <ion-card-title>{{ this.pointsbalance }}</ion-card-title>
+            <ion-card-subtitle>Points Balance</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+  
+    <ion-segment [(ngModel)]="notitype">
+      <ion-segment-button value="0" (click)="filterPointItems('0')">
+          <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="filterPointItems('1')">
+        <ion-label>Received</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2" (click)="filterPointItems('2')">
+          <ion-label>Paid</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+<ion-list>
+  <ion-item *ngFor="let item of filtereditems" class="ion-no-padding">
+    <ion-avatar slot="start">
+      <img src="assets/images/CashMash-PointsIcon.png">
+      <h5 *ngIf="item.subscriberFrom == this.smuserid" class="ptssent">-{{item.points}}</h5>
+      <h5 *ngIf="item.subscriberTo == this.smuserid" class="ptsrecd">+{{item.points}}</h5>
+    </ion-avatar>
+    <ion-label class="ion-text-wrap">
+      
+      <h2 *ngIf="item.subscriberFrom == '0' || item.subscriberTo == '0'">{{item.description}}</h2>
+      <h2 *ngIf="item.subscriberFrom > '0' && item.subscriberTo > '0'">CashMash Points</h2>
+      <p *ngIf="item.subscriberFrom != this.smuserid && item.subscriberFrom != '0' && item.subscriberTo == this.smuserid">Received From: {{item.subscriberFromName }}</p>
+      <p *ngIf="item.subscriberTo != this.smuserid && item.subscriberTo != '0' && item.subscriberFrom == this.smuserid">Sent To: {{item.subscriberToName }}</p>
+      <p>{{ item.trDate1 }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

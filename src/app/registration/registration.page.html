@@ -1,0 +1,14 @@
+<ion-content class="ion-padding">
+  <div class="totalbox border">
+    <h2>Please Login</h2>
+    <input type="number" placeholder="Mobile Number" [(ngModel)]="mobile">
+    <input type="number" placeholder="Referral Mobile Number" [(ngModel)]="refmobile">
+    <ng-otp-input *ngIf="isRequestToOtp"  (onInputChange)="onOtpChange($event)" #ngOtpInput  [config]="{length:6,allowNumbersOnly:true}"></ng-otp-input>
+    <div class="boxcheckbox">
+      <button class="loginbtn" *ngIf="!isRequestToOtp" (click)="start(mobile, refmobile)">Login</button>
+      <button class="loginbtn" *ngIf="isRequestToOtp" (click)="verifyOTP()">Verify OTP</button>
+      <p *ngIf="isRequestToOtp">OTP has been sent!</p>
+      <p *ngIf="msg.length">{{msg}}</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Enquiry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form class="form-container" [formGroup]="todo" (ngSubmit)="navigateBack()">
+    <ion-item *ngIf="this.businessId == '0'">
+      <ion-label>Select</ion-label>
+      <ion-select formControlName="enqtext1" type="text">
+        <ion-select-option *ngFor="let item of items" value="{{item.optionName}}">{{item.optionName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div>
+      <ion-input formControlName="enqtext" type="text" placeholder="Type your Enquiry Message here" name="enqtext">
+      </ion-input>
+    </div>
+  <button ion-button block type="submit" [disabled]="!todo.valid">Send Enquiry</button>
+</form>
+  </ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <img slot = "start" src="assets/images/CashMash-AppLogo.png" class="logo">
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col col-12>
+          <ion-list no-margin>
+            <ion-item-sliding *ngFor="let item of filtereditems">
+              <ion-item>
+              <h2 class="item">{{item.title}}</h2>
+            <p class="item">
+              {{ item.notification }}
+            </p>
+            <p>
+                {{ item.notiDate }}
+              </p>
+            </ion-item>
+            <ion-item-options side="start">
+                <button (click)="delete(item)" class="dlt1">
+                    <ion-icon name="trash" class="dlt">
+                    </ion-icon>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+    <ion-list>
+      <ion-item *ngFor="let item of filtereditems">
+        <ion-label class="ion-text-wrap">
+          <h2>{{item.title}}</h2>
+          <p>{{ item.notification }}</p>
+          <p>{{ item.notiDate }}</p>
+        </ion-label>
+        <ion-avatar slot = "end" (click)="delete(item)">
+          <ion-icon name="trash" size = "large" color = "secondary"></ion-icon>
+        </ion-avatar>
+      </ion-item>
+    </ion-list>
+</ion-content>

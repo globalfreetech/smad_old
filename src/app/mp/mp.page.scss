@@ -1,0 +1,92 @@
+// .input-wrapper{
+//     background: var(--ion-color-primary);
+//     border-radius: 50%;
+//     color: #ffffff;
+// }
+// .tag {
+// float: center;
+// position: absolute;
+// left: 10%;
+// top: -30%;
+// z-index: 1000;
+// background-color: var(--ion-color-primary);
+// padding: 2%;
+// color: #FFFFFF;
+// font-weight: bold;
+
+// border-radius: 50%;
+// // @include gradient-accent (rgba(0, 190, 228, 0.5) 0%, var(--ion-color-primary) 100% );
+// // @include gradient-accent (rgba(0, 190, 228, 0.5) 0%, rgba(0, 145, 210, 0.5) 100% );
+// }
+// .fav{
+//     color: var(--ion-color-secondary);  
+// }
+// img {
+//     max-width: 100%;
+// }
+// .fblist{
+//     background: lightgray;
+//     min-width: 200%;
+//     right: 0;
+//     align-items: center;
+// }
+// .mpfab {
+//     top: 15%;
+// }
+// .bottomicon{
+//     max-width: 50%;
+// }
+// .views{
+//     color: var(--ion-color-primary);
+//     font-size: 2.5rem;
+//     padding-top: 10%;
+// }
+// .ftr{
+//     background-color: lightgrey;
+// }
+// .ftr1{
+//     max-height: 10% !important;
+// }
+// .adimage{
+//     width: 100%;
+// }
+// .viewtext{
+//     padding-bottom: -10%;
+// }
+
+.logo{
+    height: 10%;
+    width: 10%;
+    }
+
+    ion-badge {
+        // position: absolute;
+        border-radius: 50%;
+        // top: 0%;
+        // right: 0%;
+      }
+
+      ion-footer ion-grid {
+        background: var(--ion-color-primary);
+        color: white;
+      }
+
+    ion-footer ion-grid ion-row ion-col ion-badge {
+        position: absolute;
+        top: 0%;
+        left: 51%;
+    }
+
+    ion-content ion-grid, ion-row, ion-col, ion-card-content {
+        padding: 0;
+    }
+
+    ion-card {
+        padding: 0;
+        margin: 2%;
+    }
+
+    iframe {
+        height: 100%;
+        width: 100%;
+    }

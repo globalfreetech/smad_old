@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
 
 @Component({
   selector: 'app-root',
@@ -11,44 +13,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
-    },
-    {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
-    }
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  showMenu: boolean;
+  userdetails;
+  custid: any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private firebaseAuthentication: FirebaseAuthentication,
+    private menuCtrl: MenuController,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -61,9 +36,29 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+    this.router.events.subscribe(
+      (event: any) => {
+        if (event instanceof NavigationEnd) {
+          console.log('this.router.url', this.router.url);
+          if (this.router.url !== '/registration'){
+            this.showMenu = true;
+          }else{
+            this.showMenu = false;
+          }
+        }
+      }
+    );
+    this.userdetails = localStorage.getItem('userdetails');
+    console.log(this.userdetails);
+    this.custid = this.userdetails.custid;
+    console.log(this.custid);
+  }
+  navigatetoenqpage(): void {
+    this.router.navigate(['/enquiry'], {state: {bookingId: 0, businessId: 0}});
+  }
+  logout(){
+    this.firebaseAuthentication.signOut();
+    localStorage.removeItem('mobileno');
+    this.router.navigateByUrl('/registration');
   }
 }

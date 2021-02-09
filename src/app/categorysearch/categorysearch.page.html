@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title (click)="popback(this.categoryNameRecd)">Back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+    <h2 (click)="popback('Category')">Show All</h2>
+     <ion-searchbar (ionInput)="getItems($event)" showCancelButton="true" animated= "true" placeholder="Search Area" autocomplete="on" type="text" autocorrect="on"></ion-searchbar>
+     <ion-list>
+      <ion-item *ngFor="let item of categorydata | orderBy" (click)="popback(item)">
+        {{item}}
+      </ion-item>
+    </ion-list>
+</ion-content>
